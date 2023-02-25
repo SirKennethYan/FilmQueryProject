@@ -1,5 +1,6 @@
 package com.skilldistillery.filmquery.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Actor {
@@ -8,7 +9,7 @@ public class Actor {
 	private int id;
 	private String firstName;
 	private String lastName;
-//	private List<Film> films;
+	private List<Film> films;
 
 //	Method - No Arg Ctor
 	public Actor() {
@@ -47,13 +48,13 @@ public class Actor {
 		this.lastName = lastName;
 	}
 
-//	public List<Film> getFilms() {
-//		return films;
-//	}
-//
-//	public void setFilms(List<Film> films) {
-//		this.films = films;
-//	}
+	public List<Film> getFilms() {
+		return films;
+	}
+
+	public void setFilms(List<Film> films) {
+		this.films = films;
+	}
 
 	// Method - toString
 	@Override
