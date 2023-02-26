@@ -44,8 +44,8 @@ public class FilmQueryApp {
 			int userInput = input.nextInt();
 			Film filmById = dbao.findFilmById(userInput);
 			if (filmById != null) {
-				System.out.println("Title: " + filmById.getTitle() + "Release Year: " + filmById.getReleaseYear()
-						+ "Rating: " + filmById.getRating() + "Description: " + filmById.getDecription());
+				System.out.println("\nTitle: " + filmById.getTitle() + "\nRelease Year: " + filmById.getReleaseYear()
+						+ "\nRating: " + filmById.getRating() + "\nDescription: " + filmById.getDecription());
 				startUserInterface(input);
 			} else {
 				System.out.println("No film found with ID: " + userInput);
