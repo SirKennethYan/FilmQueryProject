@@ -19,14 +19,14 @@ public class Film {
 
 //	Method - No Arg Ctor
 	public Film() {
-
+		super();
 	}
 
-	public Film(int id, String title, String description, Integer releaseYear, int languageId, Integer length,
+	public Film(int id, String title, String decription, Integer releaseYear, int languageId, Integer length,
 			double replacementCost, String rating, String specialFeatures) {
 		this.id = id;
 		this.title = title;
-		this.decription = description;
+		this.decription = decription;
 		this.releaseYear = releaseYear;
 		this.languageId = languageId;
 		this.length = length;

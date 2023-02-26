@@ -13,14 +13,15 @@ public class Actor {
 
 //	Method - No Arg Ctor
 	public Actor() {
-
+		super();
 	}
 
 //	Method - With Parameters
-	public Actor(int id, String firstName, String lastName) {
+	public Actor(int id, String firstName, String lastName, List<Film> films) {
 		this.id = id;
 		this.lastName = lastName;
 		this.firstName = firstName;
+		this.films = films;
 	}
 
 //	Method - Getters & Setters
