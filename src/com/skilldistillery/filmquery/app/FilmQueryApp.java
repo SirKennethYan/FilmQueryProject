@@ -19,7 +19,7 @@ public class FilmQueryApp {
 	}
 
 //	private void test() throws SQLException {
-//		Film film = dba.findFilmById(15);
+//		Film film = dbao.findFilmById(15);
 //		System.out.println(film);
 //	}
 
@@ -45,31 +45,33 @@ public class FilmQueryApp {
 			Film filmById = dbao.findFilmById(userInput);
 			if (filmById != null) {
 				System.out.println("\nTitle: " + filmById.getTitle() + "\nRelease Year: " + filmById.getReleaseYear()
-						+ "\nRating: " + filmById.getRating() + "\nDescription: " + filmById.getDecription());
-				startUserInterface(input);
+						+ "\nRating: " + filmById.getRating() + "\nDescription: " + filmById.getDecription() + "\n");
+				launch();
 			} else {
-				System.out.println("No film found with ID: " + userInput);
-				startUserInterface(input);
+				System.out.println("No film found with ID: " + userInput + "\n");
+				launch();
 			}
 		} else if (menuOpt.equals("2")) {
 			System.out.println("Enter search Keyword: 'Action', 'Drama', 'Western', etc. ");
 			String userInput = input.next();
 			List<Film> filmsByKeyword = dbao.findFilmByKeyWord(userInput);
 			if (filmsByKeyword != null && !filmsByKeyword.isEmpty()) {
-				System.out.println("Films matching keyword: " + userInput);
+				System.out.println("Films matching keyword: " + userInput + "\n");
 				for (Film film : filmsByKeyword) {
 					System.out.println("Title: " + film.getTitle() + " Release Year: " + film.getReleaseYear()
-							+ " Rating: " + film.getRating() + " Description: " + film.getDecription());
+							+ " Rating: " + film.getRating() + " Language: " + film.getLanguageName() + " Description: " 
+							+ film.getDecription()+ " Actors: " + film.getActors());
 				}
 			} else {
-				System.out.println("No films found matching keyword " + userInput);
+				System.out.println("No films found matching keyword " + userInput + "\n");
 			}
 		} else if (menuOpt.equals("3")) {
 			System.out.println("Goodbye! ");
 		} else {
-			System.out.println("Invalid input. Please enter a number between 1 - 3.");
-			startUserInterface(input);
+			System.out.println("Invalid input. Please enter a number between 1 - 3.\n");
+			launch();
 		}
+		launch();
 
 	}
 

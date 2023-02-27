@@ -49,28 +49,6 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			film.setRating(rs.getString("rating"));
 			film.setSpecialFeatures(rs.getString("special_features"));
 
-//			int id = rs.getInt("id");
-//			String title = rs.getString("title");
-//			String desc = rs.getString("description");
-//			Integer releaseYear = rs.getInt("release_year");
-//			int langId = rs.getInt("language_id");
-//			int rentDur = rs.getInt("rental_duration");
-//			double rate = rs.getDouble("rental_rate");
-//			int length = rs.getInt("length");
-//			double repCost = rs.getDouble("replacement_cost");
-//			String rating = rs.getString("rating");
-//			String features = rs.getString("special_features");
-//
-//			film.setId(id);
-//			film.setTitle(title);
-//			film.setDecription(desc);
-//			film.setReleaseYear(releaseYear);
-//			film.setLanguageId(langId);
-//			film.setLength(length);
-//			film.setReplacementCost(repCost);
-//			film.setRating(rating);
-//			film.setSpecialFeatures(features);
-
 		}
 
 		return film;
@@ -167,6 +145,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	@Override
 	public List<Film> findFilmByKeyWord(String keyWord) throws SQLException {
 		List<Film> films = new ArrayList<>();
+		List<Actor> actors = new ArrayList<>();
 
 		try {
 			Connection conn = DriverManager.getConnection(URL, user, pass);
@@ -174,7 +153,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, "%" + keyWord + "%");
 			stmt.setString(2, "%" + keyWord + "%");
-			
+
 			stmt.setString(1, keyWord);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
@@ -185,23 +164,13 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				film.setDecription(rs.getString("description"));
 				film.setReleaseYear(rs.getInt("release_year"));
 				film.setLanguageId(rs.getInt("language_id"));
+				film.setLanguageName(rs.getString("language.name"));
 				film.setLength(rs.getInt("length"));
 				film.setReplacementCost(rs.getDouble("replacement_cost"));
 				film.setRating(rs.getString("rating"));
 				film.setSpecialFeatures(rs.getString("special_features"));
-				
-//				int filmId = rs.getInt("id");
-//				String title = rs.getString("title");
-//				String desc = rs.getString("description");
-//				Integer releaseYear = rs.getInt("release_year");
-//				int langId = rs.getInt("language_id");
-//				int rentDur = rs.getInt("rental_duration");
-//				double rate = rs.getDouble("rental_rate");
-//				Integer length = rs.getInt("length");
-//				double repCost = rs.getDouble("replacement_cost");
-//				String rating = rs.getString("rating");
-//				String features = rs.getString("special_features");
-//				Film film = new Film(filmId, title, desc, releaseYear, langId, length, repCost, rating, features);
+				actors = findActorsByFilmId(film.getId());
+				film.setActors(actors);
 				films.add(film);
 			}
 

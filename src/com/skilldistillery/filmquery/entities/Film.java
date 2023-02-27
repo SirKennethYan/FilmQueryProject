@@ -11,6 +11,7 @@ public class Film {
 	private String decription;
 	private Integer releaseYear;
 	private int languageId;
+	private String languageName;
 	private Integer length;
 	private double replacementCost;
 	private String rating;
@@ -35,7 +36,15 @@ public class Film {
 		this.specialFeatures = specialFeatures;
 	}
 
-//	Method - Getters & Setters
+public String getLanguageName() {
+		return languageName;
+	}
+
+	public void setLanguageName(String languageName) {
+		this.languageName = languageName;
+	}
+
+	//	Method - Getters & Setters
 	public int getId() {
 		return id;
 	}
